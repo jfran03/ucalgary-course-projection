@@ -1,0 +1,74 @@
+.course-card {
+  background: var(--uc-white);
+  border: 1px solid var(--uc-border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  width: 200px;
+  font-size: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  position: relative;
+  cursor: default;
+}
+
+.course-card:hover {
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+}
+
+/* Category border accent */
+.card--required  { border-left: 3px solid var(--uc-red); }
+.card--elective  { border-left: 3px solid #2563eb; }
+.card--capstone  { border-left: 3px solid #7c3aed; }
+.card--complementary { border-left: 3px solid #059669; }
+
+.card-semester {
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--uc-grey-mid);
+  margin-bottom: 3px;
+}
+
+.card-code {
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--uc-grey-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.card-title {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--uc-grey-dark);
+  line-height: 1.35;
+  margin-bottom: 4px;
+}
+
+.card-units {
+  font-size: 10px;
+  color: var(--uc-grey-mid);
+  margin-bottom: 4px;
+}
+
+.card-rationale {
+  font-size: 10px;
+  color: #2563eb;
+  font-style: italic;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.card-badge {
+  display: inline-block;
+  border-radius: 10px;
+  padding: 2px 7px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.badge--required     { background: #ffe8e8; color: var(--uc-red-dark); }
+.badge--elective     { background: #eff6ff; color: #1d4ed8; }
+.badge--capstone     { background: #f5f3ff; color: #5b21b6; }
+.badge--complementary { background: #ecfdf5; color: #065f46; }
