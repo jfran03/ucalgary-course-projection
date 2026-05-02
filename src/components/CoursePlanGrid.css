@@ -1,0 +1,145 @@
+/* Strict wireframe — program → years → term rows → equal columns (min 4). */
+
+.cpg-root {
+  width: max-content;
+  min-width: 720px;
+  padding: 8px 12px 48px;
+  font-family: var(--font);
+}
+
+.cpg-root--empty {
+  padding: 32px;
+  color: var(--uc-grey-mid);
+  font-size: 14px;
+}
+
+.cpg-program {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  margin-bottom: 20px;
+  padding: 12px 24px;
+  background: linear-gradient(180deg, #ffe8e8 0%, #fff5f5 100%);
+  border: 2px solid var(--uc-red);
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--uc-red-dark);
+  letter-spacing: 0.02em;
+}
+
+.cpg-year {
+  margin-bottom: 20px;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.cpg-year-label {
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #374151;
+  background: #f3f4f6;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cpg-year-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cpg-term-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+.cpg-term-row:last-child {
+  border-bottom: none;
+}
+
+.cpg-term-label {
+  flex: 0 0 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #6b7280;
+  background: #fafafa;
+  border-right: 1px solid #e5e7eb;
+  writing-mode: horizontal-tb;
+}
+
+.cpg-term-grid {
+  flex: 1;
+  display: grid;
+  gap: 10px;
+  padding: 12px 14px;
+  min-width: 0;
+  align-items: stretch;
+}
+
+.cpg-slot {
+  min-height: 72px;
+  border-radius: 4px;
+}
+.cpg-slot--empty {
+  border: 1px dashed #e5e7eb;
+  background: #fafafa;
+}
+
+.cpg-course {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 10px;
+  border-radius: 4px;
+  border: 2px solid #d1d5db;
+  background: #ffffff;
+  min-height: 72px;
+}
+
+.cpg-course-code {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #374151;
+}
+
+.cpg-course-title {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--uc-grey-dark);
+}
+
+.cpg-course-units {
+  margin-top: auto;
+  font-size: 10px;
+  color: #9ca3af;
+}
+
+.cpg-course--required {
+  border-color: #cc0000;
+  background: #fff8f8;
+}
+.cpg-course--elective {
+  border-color: #2563eb;
+  background: #f8fbff;
+}
+.cpg-course--capstone {
+  border-color: #7c3aed;
+  background: #faf8ff;
+}
+.cpg-course--complementary {
+  border-color: #059669;
+  background: #f6fdf9;
+}

@@ -114,6 +114,101 @@ const RESPONSE_SCHEMA = `{
   ]
 }`;
 
+/** Deterministic plan from program JSON — no LLM. For local UI / Mermaid testing. */
+function buildMockPlan(goal) {
+  const rows = [];
+  const seen = new Set();
+
+  function pushRow(course, category) {
+    if (!course?.code || seen.has(course.code)) return;
+    seen.add(course.code);
+    rows.push({ course, category });
+  }
+
+  for (const c of programData.year_1.required) pushRow(c, "required");
+  for (const c of programData.required) pushRow(c, "required");
+
+  const physOptions = programData.required_choice?.[0]?.options;
+  if (physOptions?.[0]) pushRow(physOptions[0], "required");
+
+  const capOptions = programData.required_choice?.[1]?.options?.[0]?.[0];
+  if (capOptions) pushRow(capOptions, "capstone");
+
+  const electivesPicked = AVAILABLE_ELECTIVES.slice(0, 4);
+  for (const c of electivesPicked) pushRow(c, "elective");
+
+  for (const c of programData.complementary_specified.required) {
+    pushRow(c, "complementary");
+  }
+  const compPick = programData.complementary_specified.choice?.[0]?.options?.[0];
+  if (compPick) pushRow(compPick, "complementary");
+
+  pushRow(
+    {
+      code: "GENL 1XX",
+      title: "General Complementary (placeholder)",
+      units: 3,
+      prerequisites: [],
+    },
+    "complementary"
+  );
+  pushRow(
+    {
+      code: "GENL 2XX",
+      title: "General Complementary (placeholder)",
+      units: 3,
+      prerequisites: [],
+    },
+    "complementary"
+  );
+
+  const allCodes = new Set(rows.map((r) => r.course.code));
+  const TERMS = ["Fall", "Winter"];
+  const semesters = [];
+  let year = 1;
+  let termIdx = 0;
+
+  for (let i = 0; i < rows.length; i += 5) {
+    const chunk = rows.slice(i, i + 5);
+    const courses = chunk.map(({ course, category }) => ({
+      code: course.code,
+      title: course.title,
+      units: course.units,
+      category,
+      rationale:
+        category === "elective"
+          ? "Mock technical elective for offline UI testing."
+          : null,
+      prerequisites: (course.prerequisites || []).filter((p) =>
+        allCodes.has(p)
+      ),
+    }));
+    semesters.push({
+      year,
+      term: TERMS[termIdx % 2],
+      courses,
+    });
+    termIdx += 1;
+    if (termIdx % 2 === 0) year += 1;
+  }
+
+  return {
+    goal_summary: `Offline mock plan (no API): ${goal.slice(0, 140)}`,
+    semesters,
+    electives_chosen: rows
+      .filter((r) => r.category === "elective")
+      .map((r) => ({
+        code: r.course.code,
+        title: r.course.title,
+        units: r.course.units,
+        rationale: "Picked for local testing without Anthropic.",
+      })),
+  };
+}
+
+const SKIP_LLM =
+  process.env.MOCK_PLAN === "1" || process.env.UCALGARY_MOCK_PLAN === "1";
+
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
@@ -122,6 +217,11 @@ module.exports = async function handler(req, res) {
   const { goal } = req.body ?? {};
   if (!goal?.trim()) {
     return res.status(400).json({ error: "goal is required" });
+  }
+
+  if (SKIP_LLM) {
+    console.warn("[api/plan] MOCK_PLAN active — skipping Anthropic (buildMockPlan)");
+    return res.status(200).json({ plan: buildMockPlan(goal.trim()) });
   }
 
   const userMessage = `Student goal: ${goal.trim()}
