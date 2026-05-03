@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import ZoomPanShell from "./ZoomPanShell";
 import CoursePlanGrid from "./CoursePlanGrid";
 import GoalInput from "./GoalInput";
@@ -8,15 +8,6 @@ const FILTER_CATEGORIES = ["required", "elective", "capstone", "complementary"];
 
 export default function CourseFlow({ plan, onSearch, loading, error }) {
   const [activeFilters, setActiveFilters] = useState(new Set(FILTER_CATEGORIES));
-
-  const zoomFitKey = useMemo(() => {
-    const sig =
-      plan.semesters
-        ?.map((s) => `${s.year}-${s.term}-${s.courses?.length ?? 0}`)
-        .join("|") ?? "";
-    const filters = [...activeFilters].sort().join(",");
-    return `${sig}|${filters}`;
-  }, [plan, activeFilters]);
 
   function toggleFilter(cat) {
     setActiveFilters((prev) => {
@@ -73,7 +64,7 @@ export default function CourseFlow({ plan, onSearch, loading, error }) {
       </aside>
 
       <div className="flow-canvas">
-        <ZoomPanShell fitKey={zoomFitKey}>
+        <ZoomPanShell>
           <CoursePlanGrid plan={plan} activeFilters={activeFilters} />
         </ZoomPanShell>
       </div>

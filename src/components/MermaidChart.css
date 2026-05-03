@@ -5,13 +5,9 @@
   min-height: 0;
   overflow: hidden;
   background: #fafafa;
-  cursor: grab;
-  user-select: none;
-  touch-action: none;
   display: flex;
   flex-direction: column;
 }
-.mc-outer:active { cursor: grabbing; }
 
 .mc-viewport {
   flex: 1;

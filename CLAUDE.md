@@ -155,12 +155,24 @@ Electives:
 - **`ENDG` subject code for Digital Engineering** — PDF says "Digital Engineering" but CSV uses `ENDG`. Parser maps correctly.
 
 ### What's mocked or fragile
-- **⚠ Mermaid chart not rendering (known blocker).** `mermaid.run()` throws a parse error object. Likely cause: Mermaid v11 + Vite dynamic chunk loading, or a remaining diagram syntax issue (colon in labels was one root cause; space before `["Year N"]` in subgraph was another). Attempted fixes: `optimizeDeps.include: ['mermaid']` in vite.config, `mermaid.run()` instead of `render()`, plain-text labels, stripped `font-size`/`color` from classDef. Fix deferred — error message now surfaces in UI via `e.str`.
 - **Complementary general electives** use placeholder `GENL 1XX` — "Untitled Requirement Set" in PDF didn't resolve.
 - **JSON parse from model** — regex extraction before `JSON.parse`; fails gracefully with 500.
 - **Prerequisite edges** — parsed from CSV description text via regex; OR-chains and conditional prereqs may be missing or wrong.
 - **UCalgary.ca design pass not applied** — brand tokens set, full design pending.
+- **`MOCK_PLAN=1` env flag** — set in `.env` to skip Anthropic API calls during dev; `buildMockPlan()` in `api/plan.js`.
 
+### Architecture update (2026-05-02 session 2)
+- **Mermaid dropped entirely.** `mermaid` package removed from `package.json`; `MermaidChart.jsx` deleted.
+- **`CoursePlanGrid.jsx` + `CoursePlanGrid.css`** — strict wireframe grid: Program header → Year section boxes → Fall/Winter term rows → CSS `grid` with `max(4, maxRowCount)` equal columns; empty slots shown as dashed placeholders; courses styled by category.
+- **`ZoomPanShell.jsx`** — extracted reusable zoom/pan wrapper (pointer capture, wheel zoom-to-cursor, fit-to-canvas via `ResizeObserver` on both outer and inner). Replaces the pan/zoom logic that was baked into `MermaidChart.jsx`.
+- **`CourseFlow.jsx`** rewritten to import `ZoomPanShell` + `CoursePlanGrid`; `buildDiagram` removed. `zoomFitKey` derived from plan + active filters so fit triggers on data or filter changes.
+- Build passes clean: `vite build` → 152 kB JS bundle, no errors, no lints.
+
+### Architecture update (2026-05-02 session 3)
+- **Drag and zoom removed from `ZoomPanShell`.** All pointer event listeners, wheel handler, zoom state, pan state, and controls (buttons, hint) stripped out. `ZoomPanShell` is now a read-only auto-fit wrapper.
+- **Auto-fit with centering.** `fitContent` (called once on mount + `ResizeObserver`) computes a scale to fill the container and a `translateX` offset to center the grid horizontally. `transform: translateX(${x}px) scale(${scale})` applied to `mc-viewport`. Capped at 1× (never upscales).
+- **`zoomFitKey` + `useMemo` removed from `CourseFlow`.** No longer needed without interactive zoom.
+- **Leftover drag CSS removed** from `MermaidChart.css` (`cursor: grab`, `cursor: grabbing`, `user-select`, `touch-action`).
 
 ---
 
