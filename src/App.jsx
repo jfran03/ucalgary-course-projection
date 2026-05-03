@@ -35,6 +35,7 @@ export default function App() {
     <div className="app">
       <header className="app-header">
         <span className="header-logo">UCalgary</span>
+        <div className="header-sep" />
         <h1 className="header-title">Course Projection</h1>
         <p className="header-subtitle">Software Engineering BSc</p>
       </header>
@@ -49,13 +50,21 @@ export default function App() {
       ) : (
         <main className="app-landing">
           <div className="landing-inner">
-            <GoalInput onSubmit={handleSubmit} loading={loading} />
-            {error && <div className="error-banner">{error}</div>}
-            {loading && (
+            {loading ? (
               <div className="loading-state">
                 <div className="spinner" />
                 <p>Building your 4-year plan…</p>
               </div>
+            ) : (
+              <>
+                <div className="landing-hero">
+                  <span className="landing-eyebrow">UCalgary · Software Engineering BSc</span>
+                  <h2 className="landing-headline">Plan your <em>4 years.</em></h2>
+                </div>
+                <GoalInput onSubmit={handleSubmit} loading={loading} />
+                {error && <div className="error-banner">{error}</div>}
+                <p className="disclaimer">Results are prospective only. Please do your own research and consult with an academic advisor before making enrollment decisions.</p>
+              </>
             )}
           </div>
         </main>

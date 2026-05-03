@@ -1,0 +1,306 @@
+/* ── Backdrop ───────────────────────────────────────────────── */
+.cm-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 35, 58, 0.55);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 24px;
+  animation: cm-fade-in 0.15s ease both;
+}
+
+@keyframes cm-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Panel ──────────────────────────────────────────────────── */
+.cm-panel {
+  background: var(--uc-white);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 520px;
+  max-height: 85vh;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.2), 0 4px 16px rgba(0,0,0,0.1);
+  animation: cm-slide-up 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.cm-panel--wide {
+  max-width: 900px;
+}
+
+@keyframes cm-slide-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Close ──────────────────────────────────────────────────── */
+.cm-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 10;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: var(--uc-grey-light);
+  border-radius: 50%;
+  font-size: 12px;
+  color: var(--uc-grey-mid);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.12s, color 0.12s;
+}
+.cm-close:hover {
+  background: var(--uc-border);
+  color: var(--uc-grey-dark);
+}
+
+/* ── Body: two-column layout ────────────────────────────────── */
+.cm-body {
+  display: flex;
+  max-height: 85vh;
+  overflow: hidden;
+}
+
+/* ── Left: course detail ────────────────────────────────────── */
+.cm-detail {
+  flex: 0 0 340px;
+  overflow-y: auto;
+  padding: 28px 24px 36px 28px;
+}
+
+.cm-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.cm-code {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--uc-grey-mid);
+  letter-spacing: 0.06em;
+}
+
+.cm-badge {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+.cm-badge--required      { background: #fff0f0; color: var(--uc-red-dark);  }
+.cm-badge--elective      { background: #eff6ff; color: #1d4ed8;             }
+.cm-badge--capstone      { background: #f5f3ff; color: #5b21b6;             }
+.cm-badge--complementary { background: #ecfdf5; color: #065f46;             }
+
+.cm-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--uc-grey-dark);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+  padding-right: 32px;
+}
+
+.cm-units {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--uc-grey-mid);
+  margin-bottom: 20px;
+}
+
+.cm-section {
+  margin-top: 18px;
+}
+
+.cm-section-label {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--uc-grey-mid);
+  margin-bottom: 6px;
+}
+
+.cm-description {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--uc-grey-dark);
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+.cm-prereqs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.cm-prereq-pill {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  background: var(--uc-grey-light);
+  border: 1px solid var(--uc-border);
+  border-radius: 4px;
+  padding: 4px 10px;
+  color: var(--uc-grey-dark);
+}
+
+.cm-prereq-pill--link {
+  cursor: pointer;
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1d4ed8;
+  transition: background 0.12s, border-color 0.12s;
+}
+.cm-prereq-pill--link:hover {
+  background: #dbeafe;
+  border-color: #93c5fd;
+}
+
+.cm-no-data {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--uc-grey-mid);
+  margin-top: 16px;
+  font-style: italic;
+}
+
+/* ── Right: prereq chain ────────────────────────────────────── */
+.cm-chain {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  border-left: 1px solid var(--uc-border);
+  padding: 28px 20px 36px 20px;
+}
+
+.cm-chain-heading {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--uc-grey-mid);
+  margin-bottom: 16px;
+}
+
+.cm-chain-flow {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Year row: box + label side by side */
+.cm-chain-year-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cm-chain-year-box {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid var(--uc-border);
+  border-radius: 8px;
+  padding: 8px;
+  background: var(--uc-white);
+}
+
+.cm-chain-year-label {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--uc-red);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* 2-column grid inside each year box */
+.cm-chain-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+
+.cm-chain-grid > *:only-child {
+  grid-column: 1 / -1;
+}
+
+/* Course cards */
+.cm-chain-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px;
+  background: var(--uc-white);
+  border: 1px solid var(--uc-border);
+  border-left: 3px solid transparent;
+  border-radius: 6px;
+  text-align: left;
+  cursor: pointer;
+  transition: box-shadow 0.12s, border-left-color 0.12s, transform 0.1s;
+  width: 100%;
+}
+
+.cm-chain-card:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-left-color: #2563eb;
+  transform: translateY(-1px);
+}
+
+.cm-chain-card--direct {
+  border-left-color: var(--uc-red);
+}
+.cm-chain-card--direct:hover {
+  border-left-color: var(--uc-red-dark);
+}
+
+.cm-chain-code {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--uc-grey-mid);
+}
+.cm-chain-card--direct .cm-chain-code { color: var(--uc-red); }
+
+.cm-chain-title {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--uc-grey-dark);
+  line-height: 1.3;
+}
+
+/* Arrow between year sections */
+.cm-chain-arrow-row {
+  display: flex;
+  padding: 5px 44px 5px 0;
+}
+
+.cm-chain-arrow {
+  flex: 1;
+  text-align: center;
+  font-size: 15px;
+  color: #9ca3af;
+}

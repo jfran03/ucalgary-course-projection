@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ZoomPanShell from "./ZoomPanShell";
 import CoursePlanGrid from "./CoursePlanGrid";
+import CourseModal from "./CourseModal";
 import GoalInput from "./GoalInput";
 import "./CourseFlow.css";
 
@@ -8,6 +9,7 @@ const FILTER_CATEGORIES = ["required", "elective", "capstone", "complementary"];
 
 export default function CourseFlow({ plan, onSearch, loading, error }) {
   const [activeFilters, setActiveFilters] = useState(new Set(FILTER_CATEGORIES));
+  const [selectedCourse, setSelectedCourse] = useState(null);
 
   function toggleFilter(cat) {
     setActiveFilters((prev) => {
@@ -61,13 +63,29 @@ export default function CourseFlow({ plan, onSearch, loading, error }) {
             </div>
           </div>
         )}
+
+        <div className="sidebar-disclaimer">
+          Results are prospective only. Please do your own research and consult with an academic advisor before making enrollment decisions.
+        </div>
       </aside>
 
       <div className="flow-canvas">
         <ZoomPanShell>
-          <CoursePlanGrid plan={plan} activeFilters={activeFilters} />
+          <CoursePlanGrid
+            plan={plan}
+            activeFilters={activeFilters}
+            onCourseClick={(course) => setSelectedCourse(course)}
+          />
         </ZoomPanShell>
       </div>
+
+      {selectedCourse && (
+        <CourseModal
+          course={selectedCourse}
+          onClose={() => setSelectedCourse(null)}
+          onCourseClick={setSelectedCourse}
+        />
+      )}
     </div>
   );
 }

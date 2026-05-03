@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import coursesData from "../../data/courses.json";
 import "./CoursePlanGrid.css";
 
 const TERM_ORDER = ["Fall", "Winter", "Spring", "Summer"];
@@ -19,7 +20,7 @@ function safeLabel(str) {
 }
 
 /** Strict wireframe layout: Program → Year blocks → Fall/Winter rows → fixed column grid. */
-export default function CoursePlanGrid({ plan, activeFilters }) {
+export default function CoursePlanGrid({ plan, activeFilters, onCourseClick }) {
   const { yearsSorted, colCount, yearTerms } = useMemo(() => {
     const byYearTerm = {};
     for (const sem of plan.semesters) {
@@ -89,8 +90,17 @@ export default function CoursePlanGrid({ plan, activeFilters }) {
                       course.title.length > 40
                         ? `${course.title.slice(0, 38)}…`
                         : course.title;
+                    const detail = coursesData[course.code];
                     return (
-                      <article key={course.code} className={`cpg-course ${cat}`}>
+                      <article
+                        key={course.code}
+                        className={`cpg-course ${cat}`}
+                        onClick={(e) => {
+                          const rect = e.currentTarget.getBoundingClientRect();
+                          onCourseClick?.({ ...course, ...detail, category: course.category }, rect);
+                        }}
+                        style={{ cursor: "pointer" }}
+                      >
                         <div className="cpg-course-code">{course.code}</div>
                         <div className="cpg-course-title">{safeLabel(title)}</div>
                         {course.units != null && (
