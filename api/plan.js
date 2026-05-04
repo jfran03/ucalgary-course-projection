@@ -11,9 +11,33 @@ const programData = JSON.parse(
   fs.readFileSync(path.join(DATA_DIR, "program_requirements.json"), "utf8")
 );
 
+// Year 1 is fixed by the institution — students cannot reorder these.
+// Server always injects this block; Claude never receives or produces Year 1.
+const YEAR_1_COURSE_ORDER = {
+  Fall:   ["MATH 275", "ENDG 233", "MATH 211", "ENGG 225", "ENGG 204"],
+  Winter: ["MATH 277", "ENGG 202", "PHYS 259", "ENGG 212", "ENGG 200"],
+};
+
+// Build lookup from programData, remapping DIGE 233 → ENDG 233 (PDF artifact).
+const _yr1Lookup = {};
+for (const c of programData.year_1.required) {
+  const code = c.code === "DIGE 233" ? "ENDG 233" : c.code;
+  _yr1Lookup[code] = { ...c, code };
+}
+
+const YEAR_1_FIXED = ["Fall", "Winter"].map((term) => ({
+  year: 1,
+  term,
+  courses: YEAR_1_COURSE_ORDER[term].map((code) => {
+    const d = _yr1Lookup[code] ?? { code, title: "", units: 3, prerequisites: [] };
+    return { code: d.code, title: d.title, units: d.units, category: "required", rationale: null, prerequisites: [] };
+  }),
+}));
+
 // All codes in the required curriculum — used to gate elective eligibility.
+// Year 1 codes use the corrected ENDG 233 key.
 const REQUIRED_CODES = new Set([
-  ...programData.year_1.required.map((c) => c.code),
+  ...YEAR_1_FIXED.flatMap((sem) => sem.courses.map((c) => c.code)),
   ...programData.required.map((c) => c.code),
 ]);
 
@@ -31,10 +55,6 @@ function buildSystemPrompt() {
       `${c.code}: ${c.title} (${c.units}u)${c.prerequisites.length ? ` | prereqs: ${c.prerequisites.join(", ")}` : ""}`
   );
 
-  const yr1 = programData.year_1.required.map(
-    (c) => `${c.code}: ${c.title} (${c.units}u)`
-  );
-
   const electivePool = AVAILABLE_ELECTIVES.map((c) => {
     const prereqNote = c.prerequisites?.length
       ? ` | prereqs: ${c.prerequisites.join(", ")}`
@@ -47,13 +67,11 @@ function buildSystemPrompt() {
     (c) => `${c.code}: ${c.title} (${c.units}u)`
   );
 
-  return `You are an academic advisor for the University of Calgary Software Engineering BSc program. Your job is to build a personalized 4-year course plan based on a student's career goal.
+  return `You are an academic advisor for the University of Calgary Software Engineering BSc program. Your job is to build a personalized Years 2–4 course plan based on a student's career goal.
 
 PROGRAM: Bachelor of Science (BSc) in Software Engineering — UCalgary
 
-YEAR 1 REQUIRED COURSES (common to all Engineering):
-${yr1.join("\n")}
-Plus: 3 units General Complementary Studies (200-level English)
+NOTE: Year 1 is fixed by the institution and will be added automatically. Do NOT include any Year 1 courses or semesters in your output. Your plan starts at Year 2.
 
 YEARS 2–4 REQUIRED COURSES (all must be scheduled):
 ${required.join("\n")}
@@ -73,9 +91,9 @@ COMPLEMENTARY STUDIES — General (6u):
 - 2 courses from approved non-Engineering list (use placeholder code GENL 1XX)
 
 RULES:
-- Assign ALL required courses to semesters using prerequisite chains (take prereqs before courses that need them)
-- Year 1 courses fill Year 1 Fall + Winter (5 courses per term, 15u)
-- Typical load: 5 courses / 15 units per semester
+- Output semesters for Years 2, 3, and 4 only
+- Assign ALL required courses using prerequisite chains (take prereqs before the courses that need them)
+- Each semester must have exactly 5 courses (15 units). Never exceed 5 courses in a single semester.
 - Choose exactly 4 technical electives from the pool above that best align with the student's goal
 - category values: "required" | "elective" | "capstone" | "complementary"
 - rationale: null for required courses; a 1–2 sentence string for electives explaining why it fits the goal
@@ -90,7 +108,7 @@ const RESPONSE_SCHEMA = `{
   "goal_summary": "one-sentence restatement of the student's goal",
   "semesters": [
     {
-      "year": 1,
+      "year": 2,
       "term": "Fall",
       "courses": [
         {
@@ -114,6 +132,49 @@ const RESPONSE_SCHEMA = `{
   ]
 }`;
 
+/** Prepend the fixed Year 1 semesters; drop any Year 1 the model may have produced. */
+function injectYear1(plan) {
+  plan.semesters = [
+    ...YEAR_1_FIXED,
+    ...plan.semesters.filter((s) => s.year !== 1),
+  ];
+  return plan;
+}
+
+const TERM_ORDER = ["Fall", "Winter", "Spring", "Summer"];
+const MAX_COURSES_PER_SEMESTER = 5;
+
+/**
+ * Cap each semester at 5 courses. Overflow spills forward to the next
+ * semester in chronological order; if none exists, a new one is created.
+ * Year 1 semesters are skipped — they are already fixed.
+ */
+function enforceLoadLimits(plan) {
+  plan.semesters.sort((a, b) =>
+    a.year !== b.year ? a.year - b.year : TERM_ORDER.indexOf(a.term) - TERM_ORDER.indexOf(b.term)
+  );
+
+  for (let i = 0; i < plan.semesters.length; i++) {
+    const sem = plan.semesters[i];
+    if (sem.year === 1) continue; // Year 1 is fixed and already exactly 5+5
+
+    if (sem.courses.length <= MAX_COURSES_PER_SEMESTER) continue;
+
+    const overflow = sem.courses.splice(MAX_COURSES_PER_SEMESTER);
+    const next = plan.semesters[i + 1];
+    if (next && next.year !== 1) {
+      next.courses.unshift(...overflow);
+    } else {
+      // Create a new semester after this one to absorb overflow
+      const nextTerm = TERM_ORDER[(TERM_ORDER.indexOf(sem.term) + 1) % 2]; // Fall↔Winter
+      const nextYear = nextTerm === "Fall" ? sem.year + 1 : sem.year;
+      plan.semesters.splice(i + 1, 0, { year: nextYear, term: nextTerm, courses: overflow });
+    }
+  }
+
+  return plan;
+}
+
 /** Deterministic plan from program JSON — no LLM. For local UI / Mermaid testing. */
 function buildMockPlan(goal) {
   const rows = [];
@@ -125,7 +186,9 @@ function buildMockPlan(goal) {
     rows.push({ course, category });
   }
 
-  for (const c of programData.year_1.required) pushRow(c, "required");
+  for (const sem of YEAR_1_FIXED) {
+    for (const c of sem.courses) pushRow(c, "required");
+  }
   for (const c of programData.required) pushRow(c, "required");
 
   const physOptions = programData.required_choice?.[0]?.options;
@@ -221,7 +284,7 @@ module.exports = async function handler(req, res) {
 
   if (SKIP_LLM) {
     console.warn("[api/plan] MOCK_PLAN active — skipping Anthropic (buildMockPlan)");
-    return res.status(200).json({ plan: buildMockPlan(goal.trim()) });
+    return res.status(200).json({ plan: enforceLoadLimits(injectYear1(buildMockPlan(goal.trim()))) });
   }
 
   const userMessage = `Student goal: ${goal.trim()}
@@ -264,5 +327,5 @@ ${RESPONSE_SCHEMA}`;
       .json({ error: "Invalid response from model. Please try again." });
   }
 
-  return res.status(200).json({ plan });
+  return res.status(200).json({ plan: enforceLoadLimits(injectYear1(plan)) });
 };

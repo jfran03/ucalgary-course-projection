@@ -65,7 +65,10 @@ export default function CoursePlanGrid({ plan, activeFilters, onCourseClick }) {
 
   return (
     <div className="cpg-root">
-      <header className="cpg-program">Software Engineering</header>
+      <header className="cpg-program">
+        Software Engineering
+        <span className="cpg-program-sub">BSc · UCalgary</span>
+      </header>
 
       {yearsSorted.map((year) => (
         <section key={year} className="cpg-year">

@@ -100,8 +100,19 @@
   border: 1px solid transparent;
   cursor: pointer;
   text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 7px;
   opacity: 0.4;
   transition: opacity 0.15s, background 0.15s, border-color 0.15s;
+}
+
+.filter-btn::before {
+  content: '';
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
 }
 
 .filter-btn.active                { opacity: 1; }
@@ -109,6 +120,11 @@
 .filter-btn--elective             { background: #eff6ff; color: #1d4ed8;             border-color: #bfdbfe; }
 .filter-btn--capstone             { background: #f5f3ff; color: #5b21b6;             border-color: #ddd6fe; }
 .filter-btn--complementary        { background: #ecfdf5; color: #065f46;             border-color: #a7f3d0; }
+
+.filter-btn--required::before     { background: var(--uc-red); }
+.filter-btn--elective::before     { background: #2563eb; }
+.filter-btn--capstone::before     { background: #7c3aed; }
+.filter-btn--complementary::before{ background: #059669; }
 
 /* ── Electives ──────────────────────────────────────────────── */
 .electives-list {

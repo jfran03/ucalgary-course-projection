@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import "./MermaidChart.css";
+import "./ZoomPanShell.css";
 
 /** Scales content to fit the container, centered horizontally. No interactive zoom or pan. */
 export default function ZoomPanShell({ children }) {

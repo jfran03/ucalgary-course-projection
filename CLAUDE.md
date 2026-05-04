@@ -174,6 +174,40 @@ Electives:
 - **`zoomFitKey` + `useMemo` removed from `CourseFlow`.** No longer needed without interactive zoom.
 - **Leftover drag CSS removed** from `MermaidChart.css` (`cursor: grab`, `cursor: grabbing`, `user-select`, `touch-action`).
 
+### Architecture update (2026-05-04 V&V)
+- **`CourseModal.jsx` + `CourseModal.css` added** — replaces `PrereqPopover`. Full-screen dark-backdrop modal (slide-up animation). Two-panel layout when prereqs exist: left (course code badge, category badge, title, units, description, clickable prereq pills), right ("Prerequisite Chain" grouped by year level with 2-col grid per year, `↓` arrows between years, direct prereqs get red left border). Click any pill or chain card navigates modal to that course. Escape closes.
+- **`PrereqChain.jsx` + `PrereqChain.css` and `PrereqPopover.jsx` + `PrereqPopover.css`** — still on disk but no longer imported anywhere. Dead code. Safe to delete.
+- **`CourseFlow.jsx`** — `openCourse`/`navigateCourse`/`popover` state replaced with `selectedCourse` state; `onCourseClick` now calls `setSelectedCourse(course)` directly.
+- **Build status (2026-05-04):** clean — 43 modules, 198 kB JS / 17 kB CSS, no errors.
+
+### Architecture update (2026-05-04 design pass)
+- **UCalgary design pass applied.** Landing background → `--uc-cream`. Program header in grid → navy / gold left border / white text with diagonal stripe texture. Modal panel → `border-top: 4px solid var(--uc-red)`. Filter buttons → `::before` colored dot indicators, `display: flex`. Course card hover → category-colored box-shadows.
+- **`ZoomPanShell.css` created.** Stale `import "./MermaidChart.css"` replaced. `MermaidChart.css` deleted.
+- **Dead code deleted:** `PrereqChain.jsx`, `PrereqChain.css`, `PrereqPopover.jsx`, `PrereqPopover.css`.
+- **Build (2026-05-04 design):** clean — 43 modules, 198 kB JS / 17 kB CSS, no errors.
+
+### Architecture update (2026-05-04 guardrails pass)
+- **Year 1 locked server-side.** `YEAR_1_FIXED` constant defines the exact two semesters (Fall + Winter) the institution assigns. `injectYear1(plan)` strips any Year 1 Claude produces and prepends the fixed block. Claude's system prompt now explicitly says to start at Year 2.
+  - Fall: MATH 275, ENDG 233, MATH 211, ENGG 225, ENGG 204
+  - Winter: MATH 277, ENGG 202, PHYS 259, ENGG 212, ENGG 200
+  - `DIGE 233 → ENDG 233` remapped at load time (PDF artifact in `program_requirements.json`).
+  - `REQUIRED_CODES` now derives from `YEAR_1_FIXED` instead of `programData.year_1`.
+- **Load cap enforced server-side.** `enforceLoadLimits(plan)` caps each non-Year-1 semester at 5 courses. Overflow cascades forward to the next semester; a new semester is created if none exists. System prompt now states the hard rule: "exactly 5 courses per semester."
+- **Year-level heuristic removed.** An earlier `enforceYearLevels` repair (NXX course → min year N-1) was removed — prerequisite chains already encode this ordering implicitly.
+- **Pipeline order:** `enforceLoadLimits(injectYear1(plan))` applied to both live and mock paths.
+
+### Known gaps (2026-05-04)
+| Gap | Impact |
+|---|---|
+| `GENL 1XX` placeholder | General Complementary electives show a fake code |
+| Prereq parsing is regex-based | OR-chains / conditional prereqs may be missing |
+| Duplicate course detection | Claude could schedule a course twice — not caught |
+| Required course coverage | No check all required courses appear in the plan |
+| Capstone / physics choice | Exactly one of each not validated |
+| Unknown course codes | Hallucinated codes show empty modal data |
+| Invalid category values | Silently falls back to `required` styling |
+| Pitch (Stage 03) | Blank — deck, script, writeup not started |
+
 ---
 
 ## Pitch Angle
