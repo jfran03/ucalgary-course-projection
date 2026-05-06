@@ -50,17 +50,27 @@ const AVAILABLE_ELECTIVES = programData.technical_electives.pool.filter(
 );
 
 function buildSystemPrompt() {
-  const required = programData.required.map(
-    (c) =>
-      `${c.code}: ${c.title} (${c.units}u)${c.prerequisites.length ? ` | prereqs: ${c.prerequisites.join(", ")}` : ""}`
-  );
+  // Required courses grouped by their fixed year/semester placement
+  const scheduleMap = {};
+  for (const c of programData.required) {
+    if (!c.schedule) continue;
+    const key = `Year ${c.schedule.year} ${c.schedule.semester}`;
+    if (!scheduleMap[key]) scheduleMap[key] = [];
+    scheduleMap[key].push(
+      `  ${c.code}: ${c.title} (${c.units}u)${c.prerequisites.length ? ` | prereqs: ${c.prerequisites.join(", ")}` : ""}`
+    );
+  }
+  const requiredScheduleLines = Object.entries(scheduleMap)
+    .sort()
+    .map(([sem, courses]) => `${sem}:\n${courses.join("\n")}`)
+    .join("\n");
 
   const electivePool = AVAILABLE_ELECTIVES.map((c) => {
     const prereqNote = c.prerequisites?.length
       ? ` | prereqs: ${c.prerequisites.join(", ")}`
       : "";
     const desc = c.description.split("\n")[0].slice(0, 120);
-    return `${c.code}: ${c.title}${prereqNote} — ${desc}`;
+    return `${c.code} (${c.units}u): ${c.title}${prereqNote} — ${desc}`;
   });
 
   const compSpecified = programData.complementary_specified.required.map(
@@ -73,28 +83,32 @@ PROGRAM: Bachelor of Science (BSc) in Software Engineering — UCalgary
 
 NOTE: Year 1 is fixed by the institution and will be added automatically. Do NOT include any Year 1 courses or semesters in your output. Your plan starts at Year 2.
 
-YEARS 2–4 REQUIRED COURSES (all must be scheduled):
-${required.join("\n")}
+REQUIRED COURSE SCHEDULE — place each course exactly in its designated semester. Do not move required courses to other semesters:
+${requiredScheduleLines}
 
-REQUIRED CHOICES (pick one per group):
-- Physics elective (3u): PHYS 365 or PHYS 369
-- Capstone project (6u): ENEL 500  OR  ENGG 503+504  OR  ENGG 501+502
+REQUIRED CHOICES — schedule in the semester shown:
+- Year 2 Winter: Physics elective (3u) — choose PHYS 365 or PHYS 369
+- Year 4 Fall: Capstone project (6u) — choose ENEL 500  OR  ENGG 503+504  OR  ENGG 501+502
 
-TECHNICAL ELECTIVE POOL — all prerequisites already met by the required curriculum (choose exactly 4, 12 units total):
+TECHNICAL ELECTIVE POOL — choose courses totalling exactly 12 units (most are 3u; CPSC 550 is 6u). Place electives in Years 3–4 in remaining open slots, aligned with the student's goal:
 ${electivePool.join("\n")}
 
-COMPLEMENTARY STUDIES — Specified (12u total):
+TECHNICAL ELECTIVE CONSTRAINTS:
+- ENSF 519 may be selected at most 3 times
+- At most ONE of BMEN 509 or BMEN 515 may be selected
+
+COMPLEMENTARY STUDIES — Specified (12u total). Distribute across Years 3–4 in open slots:
 ${compSpecified.join("\n")}
 - Plus ONE of: ENGG 213 or COMS 363
 
-COMPLEMENTARY STUDIES — General (6u):
+COMPLEMENTARY STUDIES — General (6u). Place in Year 4 open slots:
 - 2 courses from approved non-Engineering list (use placeholder code GENL 1XX)
 
 RULES:
 - Output semesters for Years 2, 3, and 4 only
-- Assign ALL required courses using prerequisite chains (take prereqs before the courses that need them)
-- Each semester must have exactly 5 courses (15 units). Never exceed 5 courses in a single semester.
-- Choose exactly 4 technical electives from the pool above that best align with the student's goal
+- Required courses are already assigned to specific semesters above — do not move them
+- Fill remaining open slots in each semester with electives and complementary courses
+- Each semester must have exactly 5 courses. Never exceed 5 courses in a single semester.
 - category values: "required" | "elective" | "capstone" | "complementary"
 - rationale: null for required courses; a 1–2 sentence string for electives explaining why it fits the goal
 - prerequisites: list of course codes (from this plan) that are direct prerequisites of each course

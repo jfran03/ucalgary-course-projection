@@ -2,7 +2,7 @@
   "program_name": "Bachelor of Science (BSc) in Software Engineering",
   "program_code": "ENSFBSC",
   "year_1": {
-    "label": "First Year — Common Engineering",
+    "label": "First Year â€” Common Engineering",
     "required": [
       {
         "code": "ENGG 200",
@@ -110,7 +110,11 @@
         "MATH 277",
         "ENGG 233",
         "ENDG 233"
-      ]
+      ],
+      "schedule": {
+        "year": 2,
+        "semester": "Fall"
+      }
     },
     {
       "code": "ENSF 300",
@@ -121,7 +125,11 @@
       "prerequisites": [
         "ENGG 233",
         "ENDG 233"
-      ]
+      ],
+      "schedule": {
+        "year": 2,
+        "semester": "Fall"
+      }
     },
     {
       "code": "ENSF 337",
@@ -132,7 +140,11 @@
       "prerequisites": [
         "ENGG 233",
         "ENDG 233"
-      ]
+      ],
+      "schedule": {
+        "year": 2,
+        "semester": "Fall"
+      }
     },
     {
       "code": "ENSF 338",
@@ -142,7 +154,11 @@
       "prerequisites_raw": "Software Engineering for Engineers 300 and 337.",
       "prerequisites": [
         "ENSF 300"
-      ]
+      ],
+      "schedule": {
+        "year": 2,
+        "semester": "Winter"
+      }
     },
     {
       "code": "ENSF 380",
@@ -152,7 +168,11 @@
       "prerequisites_raw": "Software Engineering for Engineers 300 and 337.",
       "prerequisites": [
         "ENSF 300"
-      ]
+      ],
+      "schedule": {
+        "year": 2,
+        "semester": "Winter"
+      }
     },
     {
       "code": "ENSF 381",
@@ -162,7 +182,11 @@
       "prerequisites_raw": "Software Engineering for Engineers 300.",
       "prerequisites": [
         "ENSF 300"
-      ]
+      ],
+      "schedule": {
+        "year": 2,
+        "semester": "Winter"
+      }
     },
     {
       "code": "ENSF 400",
@@ -172,7 +196,11 @@
       "prerequisites_raw": "Software Engineering for Engineers 300 and 381.",
       "prerequisites": [
         "ENSF 300"
-      ]
+      ],
+      "schedule": {
+        "year": 3,
+        "semester": "Fall"
+      }
     },
     {
       "code": "ENSF 444",
@@ -184,7 +212,11 @@
         "ENGG 319",
         "ENDG 319",
         "ENEL 419"
-      ]
+      ],
+      "schedule": {
+        "year": 3,
+        "semester": "Fall"
+      }
     },
     {
       "code": "ENSF 460",
@@ -194,7 +226,11 @@
       "prerequisites_raw": "Computer Engineering 369.",
       "prerequisites": [
         "ENCM 369"
-      ]
+      ],
+      "schedule": {
+        "year": 3,
+        "semester": "Winter"
+      }
     },
     {
       "code": "ENSF 461",
@@ -205,7 +241,11 @@
       "prerequisites": [
         "ENSF 338",
         "ENCM 369"
-      ]
+      ],
+      "schedule": {
+        "year": 3,
+        "semester": "Winter"
+      }
     },
     {
       "code": "ENSF 462",
@@ -216,7 +256,11 @@
       "prerequisites": [
         "ENSF 338",
         "ENCM 369"
-      ]
+      ],
+      "schedule": {
+        "year": 3,
+        "semester": "Winter"
+      }
     },
     {
       "code": "ENSF 480",
@@ -226,7 +270,11 @@
       "prerequisites_raw": "Software Engineering for Engineers 380 or 409.",
       "prerequisites": [
         "ENSF 380"
-      ]
+      ],
+      "schedule": {
+        "year": 3,
+        "semester": "Fall"
+      }
     },
     {
       "code": "ENSF 555",
@@ -236,7 +284,11 @@
       "prerequisites_raw": "Mathematics 211 and admission to Software Engineering.",
       "prerequisites": [
         "MATH 211"
-      ]
+      ],
+      "schedule": {
+        "year": 3,
+        "semester": "Winter"
+      }
     },
     {
       "code": "ENEL 353",
@@ -246,7 +298,11 @@
       "prerequisites_raw": "Admission to Electrical Engineering or Software Engineering, or Computer Science 233 and Mathematics 271.",
       "prerequisites": [
         "MATH 271"
-      ]
+      ],
+      "schedule": {
+        "year": 2,
+        "semester": "Winter"
+      }
     },
     {
       "code": "ENCM 369",
@@ -258,31 +314,53 @@
         "ENEL 353",
         "ENCM 335",
         "ENSF 337"
-      ]
+      ],
+      "schedule": {
+        "year": 3,
+        "semester": "Fall"
+      }
     },
     {
-      "code": "ENSF 401",
-      "title": "[ENSF 401 — not found in catalog]",
-      "description": "",
+      "code": "SENG 401",
+      "title": "Software Architecture",
+      "description": "Software architecture concepts, patterns, and styles. Architectural design, documentation, and evaluation. Quality attributes and tactics. Distributed system architecture. Architectural patterns for large-scale software systems.\n\nPrerequisite(s): Software Engineering for Engineers 480.",
       "units": 3,
-      "prerequisites_raw": "",
-      "prerequisites": []
+      "prerequisites_raw": "Software Engineering for Engineers 480.",
+      "prerequisites": [
+        "ENSF 480"
+      ],
+      "schedule": {
+        "year": 4,
+        "semester": "Fall"
+      }
     },
     {
-      "code": "ENSF 438",
-      "title": "[ENSF 438 — not found in catalog]",
-      "description": "",
+      "code": "SENG 438",
+      "title": "Software Testing, Reliability, and Quality",
+      "description": "Principles and techniques for software testing, reliability analysis, and quality assurance. Test design, coverage criteria, regression testing, static analysis, inspection, and software reliability models.\n\nPrerequisite(s): Software Engineering for Engineers 480.",
       "units": 3,
-      "prerequisites_raw": "",
-      "prerequisites": []
+      "prerequisites_raw": "Software Engineering for Engineers 480.",
+      "prerequisites": [
+        "ENSF 480"
+      ],
+      "schedule": {
+        "year": 4,
+        "semester": "Fall"
+      }
     },
     {
-      "code": "ENSF 533",
-      "title": "[ENSF 533 — not found in catalog]",
-      "description": "",
+      "code": "SENG 533",
+      "title": "Software Performance Evaluation",
+      "description": "Techniques for measuring, modeling, and improving software performance. Performance testing, benchmarking, workload characterization, queuing network models, and simulation. Applied to real-world software systems.\n\nPrerequisite(s): Software Engineering for Engineers 480.",
       "units": 3,
-      "prerequisites_raw": "",
-      "prerequisites": []
+      "prerequisites_raw": "Software Engineering for Engineers 480.",
+      "prerequisites": [
+        "ENSF 480"
+      ],
+      "schedule": {
+        "year": 4,
+        "semester": "Winter"
+      }
     },
     {
       "code": "MATH 271",
@@ -292,7 +370,11 @@
       "prerequisites_raw": "Mathematics 211.",
       "prerequisites": [
         "MATH 211"
-      ]
+      ],
+      "schedule": {
+        "year": 2,
+        "semester": "Fall"
+      }
     },
     {
       "code": "MATH 375",
@@ -303,7 +385,11 @@
       "prerequisites": [
         "MATH 277",
         "MATH 267"
-      ]
+      ],
+      "schedule": {
+        "year": 2,
+        "semester": "Fall"
+      }
     }
   ],
   "required_choice": [
@@ -335,10 +421,14 @@
             "PHYS 259"
           ]
         }
-      ]
+      ],
+      "schedule": {
+        "year": 2,
+        "semester": "Winter"
+      }
     },
     {
-      "pick": "one stream (6 units) — capstone project",
+      "pick": "one stream (6 units) â€” capstone project",
       "category": "capstone",
       "options": [
         [
@@ -391,24 +481,190 @@
             ]
           }
         ]
-      ]
+      ],
+      "schedule": {
+        "year": 4,
+        "semester": "Fall"
+      }
     }
   ],
   "technical_electives": {
     "units_required": 12,
-    "note": "From the ENSF Technical Electives list. Max 3x ENSF 519. One 500-level course from Faculty of Science or Schulich Engineering may be approved by Associate Head.",
+    "note": "From the Software Engineering Technical Electives list. Max 3x ENSF 519. Max 1 of BMEN 509 or BMEN 515. One 500-level course from Faculty of Science or Schulich Engineering may be approved by Associate Head.",
+    "constraints": [
+      {
+        "rule": "max_count",
+        "codes": [
+          "ENSF 519"
+        ],
+        "max": 3
+      },
+      {
+        "rule": "max_one_of",
+        "codes": [
+          "BMEN 509",
+          "BMEN 515"
+        ],
+        "max": 1
+      }
+    ],
     "pool": [
       {
-        "code": "ENSF 409",
-        "title": "Principles of Software Development",
-        "description": "A survey of software design and development topics for Engineering students. Topics include: key features of an object-oriented programming language, especially inheritance and polymorphism; elements of object-oriented design; programming and application of common data structures; strategies and tools for testing and debugging.\n\nPrerequisite(s): 3 units from Computer Engineering 335, 339, Software Engineering for Engineers 337, or Geomatics Engineering 333.\n\nAntirequisite(s): Credit for Software Engineering for Engineers 409 and any of Software Engineering for Engineers 380, Electrical Engineering 409 or Computer Engineering 493 will not be allowed.",
+        "code": "BMEN 509",
+        "title": "Introduction to Biomedical Imaging and Applications",
+        "description": "Principles of various imaging modalities used in Biomedical engineering applications, including CT, MRI, ultrasound, PET, SPECT. Image processing operations: filtering, enhancement, feature extraction, pattern recognition and image reconstruction. Image registration and integration of different imaging modalities.\n\nPrerequisite(s): Fourth- or fifth-year standing in Schulich School of Engineering.",
         "units": 3,
-        "prerequisites_raw": "3 units from Computer Engineering 335, 339, Software Engineering for Engineers 337, or Geomatics Engineering 333.",
+        "prerequisites_raw": "",
+        "prerequisites": []
+      },
+      {
+        "code": "BMEN 515",
+        "title": "Bioengineering Methods in Systems and Physiology",
+        "description": "Bioengineering methods applied to biological systems and physiological modeling.",
+        "units": 3,
+        "prerequisites_raw": "",
+        "prerequisites": [],
+        "_csv_note": "NOT IN CSV"
+      },
+      {
+        "code": "BMEN 585",
+        "title": "Molecular, Cellular and Tissue Engineering",
+        "description": "Concepts and methodologies in molecular and cellular bioengineering. Applications in areas such as tissue engineering, point-of-care diagnostics, organs-on-chips and nanomedicine. Topics include micro-nanoengineering, surface engineering, biomaterials, stem cells, bioreactors, bioengineering scaffolds, and drug delivery.\n\nPrerequisite(s): Fourth- or fifth-year standing in Schulich School of Engineering.\n\nAntirequisite(s): Credit for Biomedical Engineering 585 and any of Biomedical Engineering 407, 519.09 (Cellular and Molecular Bioengineering) or Chemical Engineering 541 will not be allowed.",
+        "units": 3,
+        "prerequisites_raw": "",
+        "prerequisites": []
+      },
+      {
+        "code": "CPSC 411",
+        "title": "Compiler Construction",
+        "description": "Introduction to compilers, interpreters, and the tools for parsing and translation. Lexical analysis, context free grammars and software tools for their recognition. Attribute grammars and their applications in translation and compiling.\n\nPrerequisite(s): Computer Science 319 or 331 or Software Engineering for Engineers 338; and Computer Science 355 or Computer Engineering 369.",
+        "units": 3,
+        "prerequisites_raw": "",
+        "prerequisites": []
+      },
+      {
+        "code": "CPSC 453",
+        "title": "Introduction to Computer Graphics",
+        "description": "Introduction to computer graphics. Principles of raster image generation. Example of a graphics API. Graphics primitives. Co-ordinate systems, affine transformations and viewing of graphical objects. Introduction to rendering including shading models and ray tracing. Introduction to modelling including polygon meshes, subdivision, and parametric curves and surfaces.\n\nPrerequisite(s): Computer Science 319 or 331¿or Software Engineering for Engineers 338;¿and Mathematics 211 or 213; and 3 units from Mathematics 253, 267, 277, 283 or Applied Mathematics 219.",
+        "units": 3,
+        "prerequisites_raw": "",
+        "prerequisites": []
+      },
+      {
+        "code": "CPSC 481",
+        "title": "Human-Computer Interaction I",
+        "description": "Fundamental theory and practice of the design, implementation, and evaluation of human-computer interfaces. Topics include: principles of design; methods for evaluating interfaces with or without user involvement; techniques for prototyping and implementing graphical user interfaces.\n\nPrerequisite(s): 3 units from Software Engineering 300, Software Engineering for Engineers 480 or Data Science 311.",
+        "units": 3,
+        "prerequisites_raw": "",
+        "prerequisites": []
+      },
+      {
+        "code": "CPSC 525",
+        "title": "Principles of Computer Security",
+        "description": "Security policies and protection mechanisms for a computing system, including such topics as design principles of protection systems, authentication and authorization, reference monitors, security architecture of popular platforms, formal modelling of protection systems, discretionary access control, safety analysis, information flow control, integrity, role-based access control. Legal and ethical considerations will be introduced.\n\nPrerequisite(s): Computer Science 457¿or Software Engineering for Engineers 461; and 3 units from Computer Science 351, Mathematics 271 or 273.\n\nAntirequisite(s): Credit for Computer Science 525 and either 529 or 625 will not be allowed.",
+        "units": 3,
+        "prerequisites_raw": "",
+        "prerequisites": []
+      },
+      {
+        "code": "CPSC 550",
+        "title": "Systems Administration",
+        "description": "Topics and practices in systems administration and management. Required and optional administration duties and responsibilities. Moral and ethical conundrums, and legal responsibilities, in systems operation. Configuration and installation of operating systems and network and systems services.\n\nPrerequisite(s): Computer Science 441 or Software Engineering for Engineers 462; Computer Science 457 or Software Engineering for Engineers 461; and consent of the Department.",
+        "units": 6,
+        "prerequisites_raw": "",
+        "prerequisites": []
+      },
+      {
+        "code": "CPSC 559",
+        "title": "Introduction to Distributed Systems",
+        "description": "Designing and implementing distributed systems that overcome challenges due to concurrent computation, failure of components in the system and heterogeneity of processors and communication channels.\n\nPrerequisite(s): Computer Science 441 or Software Engineering for Engineers 462; and Computer Science 457 or Software Engineering for Engineers 461.",
+        "units": 3,
+        "prerequisites_raw": "",
+        "prerequisites": []
+      },
+      {
+        "code": "ENCM 501",
+        "title": "Principles of Computer Architecture",
+        "description": "Impacts of integrated circuit technology on processor and memory system design and performance. Tradeoffs in instruction set design. Caches. Virtual memory. Enhancement of instruction throughput with instruction-level, data-level, and thread-level parallelism. Introduction to multicore microarchitecture and programming.\n\nPrerequisite(s): Computer Engineering 511 or Software Engineering for Engineers 460.",
+        "units": 3,
+        "prerequisites_raw": "Computer Engineering 369.",
         "prerequisites": [
-          "ENCM 335",
-          "ENSF 337",
-          "GEOM 333"
+          "ENCM 369"
         ]
+      },
+      {
+        "code": "ENCM 509",
+        "title": "Fundamentals of Biometric Systems Design",
+        "description": "Biometric systems, sensors and devices, Integration of Biometric based hardware and software, Biometric applications.\n\nPrerequisite(s): 3 units from Electrical Engineering 327, Biomedical Engineering 388 or Engineering Physics 488.\n\nAntirequisite(s): Credit for both Computer Engineering 509 and 519.36 will not be allowed.",
+        "units": 3,
+        "prerequisites_raw": "",
+        "prerequisites": []
+      },
+      {
+        "code": "ENCM 515",
+        "title": "Application Specific Processors and Accelerators",
+        "description": "Review of microprocessor fundamentals. Comparison of basic system architectures for RISC, CISC and application-specific processors. Processor characteristics needed to match the requirements for specific applications. Hardware and software optimization techniques for accelerating applications and achieving system requirements on the capabilities of a given platform. Comparison of custom and current commercial processor and accelerator architectures. Elements of Hardware-Software co-design and development processes. Practical applications and laboratories.\n\nPrerequisite(s): Computer Engineering 369 or 370.",
+        "units": 3,
+        "prerequisites_raw": "Computer Engineering 369.",
+        "prerequisites": [
+          "ENCM 369"
+        ]
+      },
+      {
+        "code": "ENCM 517",
+        "title": "Computer Arithmetic and Computational Complexity",
+        "description": "Analyzing the complexity of computer arithmetic algorithms, fundamental issues concerning computational complexity problems with applications to engineering problems, including signal and image processing, cryptography and data mining.\n\nPrerequisite(s): Computer Engineering 335 or 339 or Software Engineering for Software Engineers 337.\n\nAntirequisite(s): Credit for Computer Engineering 517 and 519.34 will not be allowed.",
+        "units": 3,
+        "prerequisites_raw": "",
+        "prerequisites": []
+      },
+      {
+        "code": "ENEL 503",
+        "title": "Computer Vision",
+        "description": "Introduction to the fundamentals of image processing and computer vision. Image/video acquisition and raw data matrix manipulation; image processing operations and compression methods; object detection, isolation, and classification; 3D tracking and ego-motion with projective transformations.\n\nPrerequisite(s): Electrical Engineering 327 or Engineering Physics 488; and 3 units from Computer Engineering 335, 339 or Software Engineering for Engineers 337.",
+        "units": 3,
+        "prerequisites_raw": "",
+        "prerequisites": []
+      },
+      {
+        "code": "ENEL 525",
+        "title": "Machine Learning for Engineers",
+        "description": "Neural networks: neuron models and network architectures, perceptrons, Widrow-Hoff learning and backpropagation algorithm, associative memory, Hebbian learning, pseudo-inverse learning. Fuzzy systems: basic operations and properties of fuzzy sets; fuzzy rule generation and defuzzification of fuzzy logic; fuzzy neural networks. Applications such as pattern recognition, character recognition, stock market prediction, and control.\n\nPrerequisite(s): 3 units from Electrical Engineering 327, Biomedical Engineering 388 or Engineering Physics 488.\n\nAntirequisite(s): Credit for Electrical Engineering 525 and either Software Engineering for Engineers 411 or 544 will not be allowed.",
+        "units": 3,
+        "prerequisites_raw": "",
+        "prerequisites": []
+      },
+      {
+        "code": "ENEL 591",
+        "title": "Individual Engineering Design Project I",
+        "description": "This project involves individual work on an assigned Computer, Electrical or Software Engineering design project under the supervision of a faculty member. The project will normally involve following an established design process. Engineering Communications, including written reports, logbooks and oral presentations.\n\nPrerequisite(s): Consent of the project supervisor and course co-ordinator(s).",
+        "units": 3,
+        "prerequisites_raw": "",
+        "prerequisites": []
+      },
+      {
+        "code": "ENEL 592",
+        "title": "Undergraduate Research Thesis I",
+        "description": "A directed studies research project in an area of interest, directed by a project advisor/faculty member. Includes an independent student component covering the scientific process, ethics, review of literature, and writing scientific proposals and manuscripts. Projects may involve experimental, analytical or computer modelling studies.\n\nPrerequisite(s): Admission to Electrical or Software Engineering and consent of the project supervisor and course co-ordinator(s).",
+        "units": 3,
+        "prerequisites_raw": "",
+        "prerequisites": []
+      },
+      {
+        "code": "ENEL 594",
+        "title": "Undergraduate Research Thesis II",
+        "description": "A directed studies research project intended for students who have completed a suitable Electrical Engineering 592 project and wish to continue the assigned project by completing a more extensive investigation. The course culminates with a written thesis and presentation. Projects may involve experimental, analytic and computer modelling studies.\n\nPrerequisite(s): Electrical Engineering 592, admission to Electrical or Software Engineering and consent of the project supervisor and course co-ordinator(s).",
+        "units": 3,
+        "prerequisites_raw": "",
+        "prerequisites": []
+      },
+      {
+        "code": "ENEL 599",
+        "title": "Individual Engineering Design Project II",
+        "description": "This individual project is intended for students who have completed a suitable Electrical Engineering 591 Individual Project and wish to continue the assigned research project by completing a more extensive project. The project will normally involve following an established design process. Engineering Communications, including written reports, logbooks, and oral presentations.\n\nPrerequisite(s): Electrical Engineering 591 and consent of the project supervisor and course co-ordinator(s).",
+        "units": 3,
+        "prerequisites_raw": "",
+        "prerequisites": []
       },
       {
         "code": "ENSF 519",
@@ -438,212 +694,59 @@
         ]
       },
       {
-        "code": "ENSF 592",
-        "title": "Programming Fundamentals for Data Engineers",
-        "description": "An introductory course in programming with an emphasis on data engineering. Topics include: Basic data structures and algorithms; Loops and iterations; Files and I/O, Functions, Classes, Modules, and Packages; Strings and text manipulation; Data wrangling; Network and Web programming; Data visualization.\n\nPrerequisite(s): Admission to the MEng with specialization in Software Engineering or consent of the department.\n\nAntirequisite(s): Credit for Software Engineering for Engineers 592 and 519.48 will not be allowed.",
+        "code": "SENG 471",
+        "title": "Software Requirements Engineering",
+        "description": "Introduction to elicitation, modelling, expression and validation of the requirements. Techniques and methodologies for requirements engineering. Applications of requirements engineering to the management of the software development lifecycle.\n\nPrerequisite(s): 3 units from Computer Science 319, 331, Software Engineering for Engineers 338 or 409; and admission to the Schulich School of Engineering.\n\nAlso known as: (formerly Software Engineering for Engineers 471)",
         "units": 3,
-        "prerequisites_raw": "Admission to the MEng with specialization in Software Engineering or consent of the department.",
+        "prerequisites_raw": "",
         "prerequisites": []
       },
       {
-        "code": "ENSF 593",
-        "title": "Principles of Software Development I",
-        "description": "A fundamental study of software design and development topics for Engineering students. Topics include: fundamental programming constructs; key features of an object-oriented programming language, especially inheritance and polymorphism, elements of object-oriented design; programming and application of common data structures; strategies and tools for testing and debugging.\n\nPrerequisite(s): Admission to the MEng with specialization in Software Engineering or consent of the department.\n\nAntirequisite(s): Credit for Software Engineering for Engineers 593 and 519.49 will not be allowed.",
+        "code": "SENG 499",
+        "title": "Introductory Topics in Software Engineering",
+        "description": "Special topics at an introductory level on software development methods, technologies, or tools.\n\nPrerequisite(s): Consent of either the Department of Electrical and Computer Engineering or the Department of Computer Science.\n\nNotes: Consult Department (Computer Science or Electrical and Computer Engineering) for details regarding offerings in the upcoming academic year.\n\nMAY BE REPEATED FOR CREDIT",
         "units": 3,
-        "prerequisites_raw": "Admission to the MEng with specialization in Software Engineering or consent of the department.",
+        "prerequisites_raw": "",
         "prerequisites": []
       },
       {
-        "code": "ENSF 594",
-        "title": "Principles of Software Development II",
-        "description": "A fundamental study of software design and development topics for Engineering students. Topics include: parallel programming; event-driven programming; database programming; socket programming, and the development of client-server architectures; software engineering best practices.\n\nPrerequisite(s): Admission to the MEng with specialization in Software Engineering or consent of the department.\n\nAntirequisite(s): Credit for Software Engineering for Engineers 594 and 519.50 will not be allowed.",
+        "code": "SENG 501",
+        "title": "Advanced Topics in Software Engineering",
+        "description": "Special topics at an advanced level on software development methods, technologies, or tools.\n\nPrerequisite(s): Consent of either the Department of Electrical and Computer Engineering or the Department of Computer Science.\n\nNotes: Consult Department (Computer Science or Electrical and Computer Engineering) for details regarding offerings in the upcoming academic year.\n\nMAY BE REPEATED FOR CREDIT",
         "units": 3,
-        "prerequisites_raw": "Admission to the MEng with specialization in Software Engineering or consent of the department.",
+        "prerequisites_raw": "",
         "prerequisites": []
       },
       {
-        "code": "ENSF 603",
-        "title": "Modeling and Measurement of Software Performance",
-        "description": "Performance-oriented review of computer systems; methodologies to evaluate software performance; fundamental performance laws; performance prediction using queuing network models; discrete event simulation of computer system performance, simulation input and output analysis; performance testing, monitoring and benchmarking; workload characterization; software performance engineering.\n\nPrerequisite(s): ): Admission to the PhD in Electrical and Computer Engineering or the MSc in Electrical Engineering.\n\nAntirequisite(s): Credit for Software Engineering for Engineers 603 and 619.02 (SoftwareDevelpmnt OpenSource) will not be allowed.",
+        "code": "SENG 515",
+        "title": "Agile Software Engineering",
+        "description": "Investigation and application of agile software development practices.\n\nPrerequisite(s): 3 units from Software Engineering 401, 403, 411, or 443.",
         "units": 3,
-        "prerequisites_raw": "): Admission to the PhD in Electrical and Computer Engineering or the MSc in Electrical Engineering.",
+        "prerequisites_raw": "",
         "prerequisites": []
       },
       {
-        "code": "ENSF 604",
-        "title": "Theoretical Foundations of Software Engineering",
-        "description": "Explores formal principles of software engineering based on the common recognition that software engineering is not constrained by any physical laws as we know. The transdisciplinary foundations of software engineering are presented from the facets of information, computing, mathematics, cognitive, and management sciences, software engineering philosophies; engineering, mathematical, computational, management science, cognitive informatics, computational intelligence foundations and approaches of software engineering. As a result, a coherent framework of software engineering theories is learnt.\n\nPrerequisite(s): Admission to the PhD in Electrical and Computer Engineering or the MSc in Electrical Engineering.\n\nAntirequisite(s): Credit for Software Engineering for Engineers 604 and Software Engineering 609.19 (TheoreticalFoundationsOfSeng) will not be allowed.",
+        "code": "SENG 523",
+        "title": "Formal Methods",
+        "description": "Software specification, verification, and validation using a mathematically rigorous technique.\n\nPrerequisite(s): 3 units from Software Engineering 300, 301 or Software Engineering for Engineers 480.",
         "units": 3,
-        "prerequisites_raw": "Admission to the PhD in Electrical and Computer Engineering or the MSc in Electrical Engineering.",
+        "prerequisites_raw": "",
         "prerequisites": []
       },
       {
-        "code": "ENSF 606",
-        "title": "Software Engineering Fundamentals",
-        "description": "Methodological foundation of software development principles from requirements analysis to software design and architecture.\n\nPrerequisite(s): Admission to the MEng with specialization in Software Engineering.\n\nAntirequisite(s): Credit for Software Engineering for Engineers 606 and either 614 or 619.16 (Software Engg Fundamentals) will not be allowed.",
+        "code": "SENG 541",
+        "title": "Fundamentals of Software Evolution and Reuse",
+        "description": "Phenomena and approaches involved in the evolution and reuse of large-scale software, including design for modifiability and tool support. Strengths and weaknesses of industrially-current techniques as well as recent research results.\n\nPrerequisite(s): 3 units from Software Engineering 300, 301 or Software Engineering for Engineers 480.\n\nAntirequisite(s): Credit for Software Engineering 541 and 641 will not be allowed. \n\nAlso known as: (formerly Software Engineering 531)",
         "units": 3,
-        "prerequisites_raw": "Admission to the MEng with specialization in Software Engineering.",
+        "prerequisites_raw": "",
         "prerequisites": []
       },
       {
-        "code": "ENSF 607",
-        "title": "Advanced Software Design and Architecture",
-        "description": "A study of software design topics including: abstraction, modularity, design patterns, software modelling, architectural patterns.\n\nPrerequisite(s): Admission to the MEng with specialization in Software Engineering and completion of Software Engineering for Engineers 692, 693 and 694; or admission to the MEng with specialization in Software Engineering, foundation courses exempt cohort.\n\nAntirequisite(s): Credit for Software Engineering for Engineers 607 and 619.21 (Software Design & Arch I) will not be allowed.",
+        "code": "SENG 550",
+        "title": "Scalable Data Analytics",
+        "description": "Sources and characteristics of large scale data, i.e., \"big data\", large scale data analysis, benefits of large-scale data analysis to various industry domains, programming paradigms and middleware technologies for scalable data analysis, algorithms that enable large-scale data processing, application of large scale data algorithms in selected application domains, e.g., Web user behaviour analysis and text processing, analytics frameworks.\n\nPrerequisite(s):  3 units from Computer Science 319, 331 or Software Engineering for Engineers 338; and 3 units from Software Engineering 300, 301 or Software Engineering for Engineers 480.\n\nAntirequisite(s): Credit for Software Engineering 550 and 501.05 will not be allowed.",
         "units": 3,
-        "prerequisites_raw": "Admission to the MEng with specialization in Software Engineering and completion of Software Engineering for Engineers 692, 693 and 694; or admission to the MEng with specialization in Software Engineering, foundation courses exempt cohort.",
-        "prerequisites": [
-          "ENSF 692"
-        ]
-      },
-      {
-        "code": "ENSF 608",
-        "title": "Databases",
-        "description": "A study of topics related to architecting software systems: database design, methods and technologies for developing web-based software systems, and architecting systems for non-functional software properties.\n\nPrerequisite(s): Admission to the MEng with specialization in Software Engineering and completion of Software Engineering for Engineers 692, 693 and 694; or admission to the MEng with specialization in Software Engineering, foundation courses exempt cohort.\n\nAntirequisite(s): Credit for Software Engineering for Engineers 608 and 619.22 (Software Design & Arch II) will not be allowed.",
-        "units": 3,
-        "prerequisites_raw": "Admission to the MEng with specialization in Software Engineering and completion of Software Engineering for Engineers 692, 693 and 694; or admission to the MEng with specialization in Software Engineering, foundation courses exempt cohort.",
-        "prerequisites": [
-          "ENSF 692"
-        ]
-      },
-      {
-        "code": "ENSF 609",
-        "title": "Team Design Project in Software Engineering I",
-        "description": "A team design project in either software development or software best practice and experience.\n\nPrerequisite(s): Admission to the MEng with specialization in Software Engineering and Software Engineering for Engineers 607, 608, 611 and 614; or admission to the MEng with specialization in Software Engineering, foundation courses exempt cohort.\n\nCorequisite(s): Software Engineering for Engineers 610.\n\nAntirequisite(s): Credit for Software Engineering for Engineers 609 and 619.23 (Team Design Project I) will not be allowed.",
-        "units": 3,
-        "prerequisites_raw": "Admission to the MEng with specialization in Software Engineering and Software Engineering for Engineers 607, 608, 611 and 614; or admission to the MEng with specialization in Software Engineering, foundation courses exempt cohort.",
-        "prerequisites": [
-          "ENSF 607"
-        ]
-      },
-      {
-        "code": "ENSF 610",
-        "title": "Team Design Project in Software Engineering II",
-        "description": "A team design project in either software development or software best practice and experience.\n\nPrerequisite(s): Admission to the MEng with specialization in Software Engineering and completion of Software Engineering for Engineers 692, 693 and 694; or admission to the MEng with specialization in Software Engineering, foundation courses exempt cohort. \n\nCorequisite(s): Software Engineering for Engineers 609.\n\nAntirequisite(s): Credit for Software Engineering for Engineers 610 and 619.24 (Team Design Project II) will not be allowed.",
-        "units": 3,
-        "prerequisites_raw": "Admission to the MEng with specialization in Software Engineering and completion of Software Engineering for Engineers 692, 693 and 694; or admission to the MEng with specialization in Software Engineering, foundation courses exempt cohort.",
-        "prerequisites": [
-          "ENSF 692"
-        ]
-      },
-      {
-        "code": "ENSF 611",
-        "title": "Machine Learning for Software Engineers",
-        "description": "Covers Machine Learning, which focuses on developing machine learning applications, specifically in the engineering domain. Covers basic techniques for supervised and unsupervised learning, with the emphasis on the applied aspects of the techniques.\n\nPrerequisite(s): Admission to the MEng with specialization in Software Engineering and completion of Software Engineering for Engineers 692, 693 and 694; or admission to the MEng with specialization in Software Engineering, foundation courses exempt cohort. \n\nAntirequisite(s): Credit for Software Engineering for Engineers 611 and either 519.47 (Applied Data Science) or 619.25 (Machine Learning for ENSF) will not be allowed.",
-        "units": 3,
-        "prerequisites_raw": "Admission to the MEng with specialization in Software Engineering and completion of Software Engineering for Engineers 692, 693 and 694; or admission to the MEng with specialization in Software Engineering, foundation courses exempt cohort.",
-        "prerequisites": [
-          "ENSF 692"
-        ]
-      },
-      {
-        "code": "ENSF 612",
-        "title": "Engineering Large Scale Data Analytics Systems",
-        "description": "Sources and characteristics of large scale data, i.e., \"big data\", large scale data analysis, benefits of large scale data analysis to various industry domains, scalable data analysis frameworks, large scale data algorithms in selected application domains.\n\nPrerequisite(s): Admission to the MEng with specialization in Software Engineering and completion of Software Engineering for Engineers 692, 693 and 694; or admission to the MEng with specialization in Software Engineering, foundation courses exempt cohort.\n\nAntirequisite(s): Credit for Software Engineering for Engineers 612 and 619.28 (Large Scale Analytics Systems) will not be allowed.",
-        "units": 3,
-        "prerequisites_raw": "Admission to the MEng with specialization in Software Engineering and completion of Software Engineering for Engineers 692, 693 and 694; or admission to the MEng with specialization in Software Engineering, foundation courses exempt cohort.",
-        "prerequisites": [
-          "ENSF 692"
-        ]
-      },
-      {
-        "code": "ENSF 613",
-        "title": "Software Requirements Analysis and Process Management",
-        "description": "Introduction to software development process, product management, and software requirements analysis: Elicitation, modelling, and validation of requirements.\n\nPrerequisite(s): Admission to the PhD in Electrical and Computer Engineering or the MSc in Electrical Engineering.\n\nAntirequisite(s): Credit for Software Engineering for Engineers 613 and 619.30 (Rqrm't Analysis & Process Mgmt) will not be allowed.",
-        "units": 3,
-        "prerequisites_raw": "Admission to the PhD in Electrical and Computer Engineering or the MSc in Electrical Engineering.",
-        "prerequisites": []
-      },
-      {
-        "code": "ENSF 614",
-        "title": "Advanced System Analysis and Software Design",
-        "description": "Advanced topics on principles of system analysis, system thinking, requirements engineering, essential elements of quality software design, design patterns, and system-level software analysis.\n\nPrerequisite(s): Admission to the MEng with specialization in Software Engineering and completion of Software Engineering for Engineers 692, 693 and 694; or admission to the MEng with specialization in Software Engineering, foundation courses exempt cohort.\n\nAntirequisite(s): Credit for Software Engineering for Engineers 614 and either 606 or 619.34 (AdvSytm analy&SoftwareDesgn) will not be allowed.",
-        "units": 3,
-        "prerequisites_raw": "Admission to the MEng with specialization in Software Engineering and completion of Software Engineering for Engineers 692, 693 and 694; or admission to the MEng with specialization in Software Engineering, foundation courses exempt cohort.",
-        "prerequisites": [
-          "ENSF 692"
-        ]
-      },
-      {
-        "code": "ENSF 615",
-        "title": "Science and Technology of Brain-Machine Interface Systems",
-        "description": "Fundamental principles and methodologies of brain-machine interface (BMI) systems. Cover basic anatomy and functional architecture of the human brain, principles and tools of  brainwave acquisition, methodologies of processing and interfacing the brainwaves, state-of-the-arts of BMI systems, ethical aspects, and BMI applications and future applications.\n\nPrerequisite(s): Software Engineering for Engineers 545 or Electrical Engineering 602 or by approval of the course instructor. \n\nAntirequisite: Credit for Software Engineering for Engineers 615 and 520 will not be allowed.\n\nAlso known as: (formerly Software Engineering for Engineers 619.36)",
-        "units": 3,
-        "prerequisites_raw": "Software Engineering for Engineers 545 or Electrical Engineering 602 or by approval of the course instructor.",
-        "prerequisites": [
-          "ENSF 545",
-          "ENEL 602"
-        ]
-      },
-      {
-        "code": "ENSF 616",
-        "title": "Software Development Using Open Source",
-        "description": "This course takes a two-pronged approach, addressing both the utilization of open source software development and the skills necessary for effective open source software development in industry. Learners will examine academic literature around the topic, and practice some technical skills associated with modern software development.\n\nPrerequisite(s): Admission to the PhD in Electrical and Computer Engineering or the MSc in Electrical Engineering.\n\nAntirequisite(s): Credit for Software Engineering for Engineers 616 and 619.07 (Key Tech 5G Networks & Beyond) will not be allowed.",
-        "units": 3,
-        "prerequisites_raw": "Admission to the PhD in Electrical and Computer Engineering or the MSc in Electrical Engineering.",
-        "prerequisites": []
-      },
-      {
-        "code": "ENSF 617",
-        "title": "Introduction to Machine Learning",
-        "description": "Overview of the historical context that allowed deep learning to flourish. Different types of neural networks; how to train and deploy them in various problems; Fine-tuning pre-trained models to achieve state-of-the-art results in relevant applications; overview of the current trends in deep learning.\n\nPrerequisite(s): Admission to the MEng with specialization in Software Engineering.\n\nAntirequisite(s):  Credit for Software Engineering for Engineers 617 and Electrical Engineering 619.51, 645 or 682 will not be allowed.",
-        "units": 3,
-        "prerequisites_raw": "Admission to the MEng with specialization in Software Engineering.",
-        "prerequisites": []
-      },
-      {
-        "code": "ENSF 618",
-        "title": "Learning Representations in Deep Neural Networks",
-        "description": "Advanced knowledge on the theory and practice in training Deep Neural Networks (DNNs), with a focus on optimization and learning representations from natural image and natural language datasets.\n\nPrerequisite(s): Admission to the PhD in Electrical and Computer Engineering or the MSc in Electrical Engineering.\n\nAlso known as: (formerly Software Engineering for Engineers 619.19 (Learning Representations in Deep Neural Networks) )",
-        "units": 3,
-        "prerequisites_raw": "Admission to the PhD in Electrical and Computer Engineering or the MSc in Electrical Engineering.",
-        "prerequisites": []
-      },
-      {
-        "code": "ENSF 619",
-        "title": "Special Topics",
-        "description": "A study of problems of particular interest to students specializing in Software Engineering.\n\nPrerequisite(s): Admission to the PhD in Electrical and Computer Engineering or the MSc in Electrical Engineering.\n\nMAY BE REPEATED FOR CREDIT",
-        "units": 3,
-        "prerequisites_raw": "Admission to the PhD in Electrical and Computer Engineering or the MSc in Electrical Engineering.",
-        "prerequisites": []
-      },
-      {
-        "code": "ENSF 620",
-        "title": "Advanced Data Analytics",
-        "description": "Research skills course designed to expand knowledge with supercomputing clusters, numerical methods, and analyses. Introduction to version control and source management. Data curation, management, and compliance.  Using schedulers for parallelization.  Benchmarking computational requirements.  Machine learning and numerical processing for challenging data analytics problems.  Reducing high-dimensional data for interpretation.  Agentic-assisted programming approaches.  Making graphics from data.\n\nPrerequisite(s): Admission to the PhD in Electrical and Computer Engineering or the MSc in Electrical Engineering.\n\nAlso known as: (formerly Software Engineering for Engineers 619.01 (Advanced Data Analytics) )",
-        "units": 3,
-        "prerequisites_raw": "Admission to the PhD in Electrical and Computer Engineering or the MSc in Electrical Engineering.",
-        "prerequisites": []
-      },
-      {
-        "code": "ENSF 621",
-        "title": "Software Engineering for AI/ML-based Systems",
-        "description": "Software engineering practices and Artificial Intelligence/Machine learning techniques for developing robust and scalable applications. Approaches to design, develop, and maintain software systems that leverage AI/ML technologies effectively.  \n\nPrerequisite(s): Admission to the PhD in Electrical and Computer Engineering or the MSc in Electrical Engineering.\n\n Also known as: (formerly Software Engineering for Engineers 619.26 (Software Engineering for AI/ML-based Systems) )",
-        "units": 3,
-        "prerequisites_raw": "Admission to the PhD in Electrical and Computer Engineering or the MSc in Electrical Engineering.",
-        "prerequisites": []
-      },
-      {
-        "code": "ENSF 692",
-        "title": "Programming Fundamentals for Data Engineers",
-        "description": "An introductory course in programming with an emphasis on data engineering. Topics include: basic data structures and algorithms; loops and iterations; files and I/O, functions, classes, modules, and packages; strings and text manipulation; data wrangling; network and web programming; data visualization.\n\nPrerequisite(s): Admission to the MEng with specialization in Software Engineering.\n\nAntirequisite(s): Credit for Software Engineering for Engineers 692 and either 519.48 (Prog Fundmtl's Data Engineers) or 592 will not be allowed.",
-        "units": 3,
-        "prerequisites_raw": "Admission to the MEng with specialization in Software Engineering.",
-        "prerequisites": []
-      },
-      {
-        "code": "ENSF 693",
-        "title": "Principles of Software Development",
-        "description": "A fundamental study of software design and development topics for engineering students. Topics include: fundamental programming constructs; key features of an object-oriented programming language, especially inheritance and polymorphism, elements of object-oriented design; programming and application of common data structures; strategies and tools for testing and debugging.\n\nPrerequisite(s): Admission to the MEng with specialization in Software Engineering.\n\nAntirequisite(s): Credit for Software Engineering for Engineers 693 and either 519.49 (Principles of Software Dev I) or 593 will not be allowed.",
-        "units": 3,
-        "prerequisites_raw": "Admission to the MEng with specialization in Software Engineering.",
-        "prerequisites": []
-      },
-      {
-        "code": "ENSF 694",
-        "title": "Data Structures and Algorithm Analysis for Engineers",
-        "description": "A fundamental study of data structures and algorithms for engineering students. Topics include arrays, lists, stacks, queues, trees, hash tables, graphs, algorithms for searching and sorting, and introduction to algorithm analysis.\n\nPrerequisite(s): Admission to the MEng with specialization in Software Engineering.\n\nAntirequisite(s): Credit for Software Engineering for Engineers 694 and either 519.50 (Principles of Software Dev II) or 594 will not be allowed.",
-        "units": 3,
-        "prerequisites_raw": "Admission to the MEng with specialization in Software Engineering.",
+        "prerequisites_raw": "",
         "prerequisites": []
       }
     ]
@@ -657,7 +760,8 @@
         "description": "The basic tools and methodology of engineering economic studies. Topics include investment decisions, theory of replacement, economies of scale, externalities, social decision making and government regulation. Examples are drawn from engineering projects.\n\nPrerequisite(s): Registration in the Faculty of Engineering with second-year standing or higher. If not registered in the Schulich School of Engineering, consent of the Department of Economics. If required for APEGA, consent of the Schulich Undergraduate Studies Office.\n\nAntirequisite(s): Credit for Engineering 209 and Economics 209 will not be allowed.",
         "units": 3,
         "prerequisites_raw": "Registration in the Faculty of Engineering with second-year standing or higher. If not registered in the Schulich School of Engineering, consent of the Department of Economics. If required for APEGA, consent of the Schulich Undergraduate Studies Office.",
-        "prerequisites": []
+        "prerequisites": [],
+        "note": "Not available to first-year students. Second-year standing required."
       },
       {
         "code": "ENGG 481",
