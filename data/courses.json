@@ -1,4 +1,16 @@
 {
+  "PHYS 365": {
+    "code": "PHYS 365",
+    "subject_code": "PHYS",
+    "catalog_number": "365",
+    "title": "Acoustics, Optics and Modern Physics (for students in Engineering)",
+    "description": "Wave motion as applied to acoustics and physical optics. Wave-particle duality applied to light and matter; electron energy levels of atoms and crystals.\n\nPrerequisite(s): Mathematics 277; or Mathematics 177 and 267; Physics 259; and admission to a program in Engineering.\n\nAntirequisite(s): Credit for Physics 365 and 369 will not be allowed. Not open to Geomatics Engineering students.",
+    "units": 3,
+    "prerequisites_raw": "Mathematics 277; or Mathematics 177 and 267; Physics 259; and admission to a program in Engineering.",
+    "prerequisites": [
+      "PHYS 259"
+    ]
+  },
   "ENCM 369": {
     "code": "ENCM 369",
     "subject_code": "ENCM",

@@ -82,7 +82,7 @@ export default function CourseModal({ course, onClose, onCourseClick }) {
               </div>
             )}
 
-            {course.prerequisites?.length > 0 && (
+            {!hasChain && course.prerequisites?.length > 0 && (
               <div className="cm-section">
                 <div className="cm-section-label">Prerequisites</div>
                 <div className="cm-prereqs">
