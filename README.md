@@ -10,6 +10,13 @@ Two things pushed me to build this:
 
 ---
 
+## Preview
+
+![Preview 1](Preview1.PNG)
+![Preview 2](Preview2.PNG)
+
+---
+
 ## What It Does
 
 You type in a career goal (e.g. "I want to work in AI/ML") and the app generates a personalized 4-year course plan for UCalgary Software Engineering. Required courses are locked in; technical electives and complementary studies are chosen and rationalized by Claude to match your goal. The result renders as a grid organized by year and semester.
